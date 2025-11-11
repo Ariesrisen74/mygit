@@ -25,6 +25,12 @@ class SyncCommands:
             wrapper.print_warning("No changes to commit")
             return
 
+        # Select files to add
+        selected_files = wrapper.select_files_interactive()
+        if selected_files is None:
+            wrapper.print_info("Operation cancelled")
+            return
+
         # Get commit message
         print(f"\n{Colors.BOLD}Enter commit message:{Colors.ENDC}")
         commit_msg = input(f"{Colors.CYAN}> {Colors.ENDC}").strip()
@@ -35,12 +41,22 @@ class SyncCommands:
 
         # Execute operations
         print()
-        wrapper.print_info("Adding files...")
-        if not wrapper.run_command("git add ."):
-            return
+        wrapper.print_info("Adding selected files...")
+
+        # Add files one by one with proper escaping
+        for file in selected_files:
+            # Escape file path for shell
+            escaped_file = file.replace('"', '\\"')
+            if not wrapper.run_command(f'git add "{escaped_file}"'):
+                wrapper.print_error(f"Failed to add: {file}")
+                return
+
+        wrapper.print_success(f"Added {len(selected_files)} file(s)")
 
         wrapper.print_info("Creating commit...")
-        if not wrapper.run_command(f'git commit -m "{commit_msg}"'):
+        # Escape commit message
+        escaped_msg = commit_msg.replace('"', '\\"')
+        if not wrapper.run_command(f'git commit -m "{escaped_msg}"'):
             return
 
         wrapper.print_info("Pushing to remote...")
@@ -67,6 +83,12 @@ class SyncCommands:
             wrapper.print_warning("No changes to commit")
             return
 
+        # Select files to add
+        selected_files = wrapper.select_files_interactive()
+        if selected_files is None:
+            wrapper.print_info("Operation cancelled")
+            return
+
         # Get commit message
         print(f"\n{Colors.BOLD}Enter commit message:{Colors.ENDC}")
         commit_msg = input(f"{Colors.CYAN}> {Colors.ENDC}").strip()
@@ -77,12 +99,22 @@ class SyncCommands:
 
         # Execute operations
         print()
-        wrapper.print_info("Adding files...")
-        if not wrapper.run_command("git add ."):
-            return
+        wrapper.print_info("Adding selected files...")
+
+        # Add files one by one with proper escaping
+        for file in selected_files:
+            # Escape file path for shell
+            escaped_file = file.replace('"', '\\"')
+            if not wrapper.run_command(f'git add "{escaped_file}"'):
+                wrapper.print_error(f"Failed to add: {file}")
+                return
+
+        wrapper.print_success(f"Added {len(selected_files)} file(s)")
 
         wrapper.print_info("Creating commit...")
-        if wrapper.run_command(f'git commit -m "{commit_msg}"'):
+        # Escape commit message
+        escaped_msg = commit_msg.replace('"', '\\"')
+        if wrapper.run_command(f'git commit -m "{escaped_msg}"'):
             wrapper.print_success("Commit created!")
 
     def pull_changes(self, wrapper):
