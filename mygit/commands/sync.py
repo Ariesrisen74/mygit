@@ -25,10 +25,10 @@ class SyncCommands:
             wrapper.print_warning("No changes to commit")
             return
 
-        # Select files to add
-        selected_files = wrapper.select_files_interactive()
-        if selected_files is None:
-            wrapper.print_info("Operation cancelled")
+        # Select files to add using interactive checkbox menu
+        selected_files = wrapper.select_files_checkbox()
+        if selected_files is None or len(selected_files) == 0:
+            wrapper.print_info("Operation cancelled or no files selected")
             return
 
         # Get commit message
@@ -83,10 +83,10 @@ class SyncCommands:
             wrapper.print_warning("No changes to commit")
             return
 
-        # Select files to add
-        selected_files = wrapper.select_files_interactive()
-        if selected_files is None:
-            wrapper.print_info("Operation cancelled")
+        # Select files to add using interactive checkbox menu
+        selected_files = wrapper.select_files_checkbox()
+        if selected_files is None or len(selected_files) == 0:
+            wrapper.print_info("Operation cancelled or no files selected")
             return
 
         # Get commit message

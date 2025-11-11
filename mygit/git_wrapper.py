@@ -3,6 +3,7 @@ Core Git wrapper functionality
 """
 import subprocess
 import sys
+import inquirer
 from .colors import Colors
 
 
@@ -76,6 +77,89 @@ class GitWrapper:
                 files.append((status, filepath))
 
         return files
+
+    def select_files_checkbox(self):
+        """Interactive checkbox file selection using inquirer
+        Returns list of selected file paths, or None if cancelled/no files
+        """
+        files = self.get_changed_files()
+        if not files:
+            return None
+
+        # Prepare choices with colored status indicators
+        status_symbols = {
+            'M': f"{Colors.CYAN}M{Colors.ENDC}",    # Modified
+            'A': f"{Colors.GREEN}A{Colors.ENDC}",   # Added
+            'D': f"{Colors.FAIL}D{Colors.ENDC}",    # Deleted
+            '??': f"{Colors.WARNING}?{Colors.ENDC}", # Untracked
+            'R': f"{Colors.CYAN}R{Colors.ENDC}",    # Renamed
+        }
+
+        # Create choices: list of tuples (display_name, file_path)
+        choices = []
+        file_values = []  # Track actual file paths (without Cancel)
+
+        for status, filepath in files:
+            clean_status = status.strip()
+            status_symbol = status_symbols.get(clean_status, clean_status)
+            display_name = f"[{status_symbol}] {filepath}"
+            choices.append((display_name, filepath))
+            file_values.append(filepath)
+
+        # Add visual separator before Cancel (empty line)
+        separator_marker = "<<<SEPARATOR>>>"
+        choices.append(("─" * 40, separator_marker))
+
+        # Add Cancel option at the end
+        cancel_marker = "<<<CANCEL>>>"
+        choices.append((f"{Colors.FAIL}❌ Cancel{Colors.ENDC}", cancel_marker))
+
+        try:
+            print(f"\n{Colors.BOLD}Select files to add:{Colors.ENDC}")
+            print(f"{Colors.CYAN}Use ↑/↓ arrows to navigate, Space to select, Enter to confirm{Colors.ENDC}\n")
+
+            questions = [
+                inquirer.Checkbox(
+                    'files',
+                    message="Select files (Space to toggle, Enter to confirm)",
+                    choices=choices,
+                    default=None,
+                )
+            ]
+
+            answers = inquirer.prompt(questions)
+
+            # If user cancelled (Ctrl+C or ESC)
+            if answers is None or not answers.get('files'):
+                return None
+
+            selected_files = answers['files']
+
+            # Filter out separator and cancel markers
+            selected_files = [f for f in selected_files if f not in [cancel_marker, separator_marker]]
+
+            # Check if Cancel was selected
+            if cancel_marker in answers['files']:
+                # Check if all files were selected (TAB pressed)
+                all_files_selected = set(file_values).issubset(set(answers['files']))
+
+                if all_files_selected and len(answers['files']) > len(file_values):
+                    # User pressed TAB - ignore Cancel, keep files
+                    print(f"\n{Colors.CYAN}ℹ All files selected (Cancel ignored){Colors.ENDC}")
+                else:
+                    # User manually selected Cancel - cancel operation
+                    print(f"\n{Colors.WARNING}Operation cancelled by user{Colors.ENDC}")
+                    return None
+
+            # If no files selected after filtering
+            if not selected_files:
+                return None
+
+            return selected_files
+
+        except (KeyboardInterrupt, EOFError):
+            # User cancelled
+            return None
 
     def select_files_interactive(self):
         """Interactive file selection

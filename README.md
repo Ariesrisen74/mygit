@@ -7,8 +7,9 @@ Oleksandr Izotov
 
 ## Features
 
-- 🚀 **Full Sync** - Add, commit, and push in one command
-- 💾 **Quick Commit** - Add and commit without pushing
+- 🚀 **Full Sync** - Add, commit, and push in one command with **interactive file selection**
+- 💾 **Quick Commit** - Add and commit without pushing with **interactive file selection**
+- ✅ **Interactive File Picker** - Select files using arrow keys and checkboxes (Space to toggle, Enter to confirm)
 - 🆕 **Project Initialization** - Initialize new Git projects with .gitignore
 - 📥 **Clone Repository** - Easy repository cloning
 - 🔄 **Pull Changes** - Quick pull from remote
@@ -43,6 +44,11 @@ First, clone or download this repository:
 ```bash
 git clone <repository-url>
 cd mygit
+```
+
+Install required Python packages:
+```bash
+pip3 install -r requirements.txt
 ```
 
 ### Option 1: Run directly from project directory
@@ -122,13 +128,44 @@ To customize, edit the `navigate_directory()` function in `navigation.py`.
 1. Navigate to your project directory (option 8)
 2. Make changes to your code
 3. Choose "Full sync" (option 1)
-4. Enter commit message
-5. Done! Changes are added, committed, and pushed
+4. **Select files interactively**:
+   - Use ↑/↓ arrow keys to navigate
+   - Press Space to select/deselect files
+   - Press Enter to confirm selection
+5. Enter commit message
+6. Done! Selected files are added, committed, and pushed
+
+### Interactive File Selection
+
+When you choose "Full sync" or "Just commit", you'll see an interactive menu like this:
+
+```
+Select files to add:
+Use ↑/↓ arrows to navigate, Space to select, Enter to confirm
+
+❯ ◯ [M] mygit/commands/sync.py
+  ◉ [M] mygit/git_wrapper.py
+  ◯ [?] new_file.txt
+```
+
+- **Arrow keys** (↑/↓) - Navigate through files
+- **Space** - Toggle file selection (◯ = unselected, ◉ = selected)
+- **Enter** - Confirm selection and proceed
+- **Ctrl+C** - Cancel operation
+
+Status indicators:
+- `[M]` - Modified file
+- `[A]` - Added/staged file
+- `[D]` - Deleted file
+- `[?]` - Untracked/new file
+- `[R]` - Renamed file
 
 ## Requirements
 
 - Python 3.6+
 - Git
+- Python packages (install via `pip3 install -r requirements.txt`):
+  - inquirer>=3.4.0 (for interactive file selection)
 
 ## Clean Code Principles
 
